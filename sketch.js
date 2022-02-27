@@ -6,6 +6,7 @@
 let source;
 let difficultySlider;
 let refreshButton;
+let images = [];
 
 // Tiles configuration
 let tiles = [];
@@ -19,14 +20,32 @@ let board = [];
 
 // Loading the image
 function preload() {
-  source = loadImage("Gideon.jpg");
+  images[0] = loadImage("Gideon.jpg");
+  // images[0].resize(800, 1000);
+  
+  images[1] = loadImage("Harrow.jpg");
+  // images[1].resize(800, 1000);
+  
+  images[2] = loadImage("Nona.jpg");
+  // images[2].resize(800, 1000);
+  
+  
+  source = random(images);
+  // source.resize(800, 1000);
+  // console.log(source, source.width, source.height);
+  // width = source.width;
+  // height = source.height;
 }
 
 function setup() {
-  createCanvas(601, 886);
+  source.resize(800, 0);
+  
+  createCanvas(source.width, source.height);
   // pixel dimensions of each tiles
   w = width / cols;
   h = height / rows;
+  
+  // console.log(width, height)
   
   // Chop up source image into tiles
   for (let i = 0; i < cols; i++) {
